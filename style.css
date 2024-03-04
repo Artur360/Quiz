@@ -1,0 +1,37 @@
+@font-face {
+    font-family: f1;
+    src: url(Heavitas.ttf);
+}
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body{
+
+font-family: f1;
+background-color: rgba(51, 214, 51, 0.418);
+}
+
+
+button{
+border-radius: 10px;
+border: 2px solid rgb(2, 92, 14);
+
+    background-color: rgb(19, 179, 19);
+    box-shadow: 5px 5px 1px green;
+}
+
+
+button:hover{
+box-shadow: 1px 1px 1px white;
+
+transition: 0.5s;
+}
+h1{
+
+margin-top: 100px;
+
+}

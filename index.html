@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="download.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Perguntas e respostas</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+    }
+
+    .quiz-container {
+
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    #pergunta {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    #opcoes {
+
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    button {
+
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .correto {
+
+        background-color: #8bc34a;
+
+    }
+
+    .incorreto {
+
+        background-color: #ff5722;
+    }
+</style>
+
+<body>
+
+    <div class="quiz-container">
+<h1>Quiz de Perguntas e Respostas</h1>
+        <div id="pergunta"> </div>
+        <div id="opcoes"> </div>
+        <div id="resultado"></div>
+    </div>
+
+
+    <script>
+
+        const perguntas = [
+            {
+                pergunta: "Em Super Mario World, qual o power up representado por uma pena?",
+                opcoes: ["Capa", "Crescimento", "lançar fogo", "Imortalidade"],
+                resposta: "Capa"
+            },
+
+            {
+                pergunta: "Qual personagem dos games tem a abilidade hadouken?",
+                opcoes: ["Ryu", "Luigi", "Kratos", "Sonic"],
+                resposta: "Ryu"
+            },
+
+            {
+                pergunta: " O jogo mais vendido na historia é? ",
+                opcoes: ["GTA", "Minecraft", "tetris", "Lego"],
+                resposta: "Minecraft"
+            },
+
+            {
+                pergunta: "Qual o numero de esmeraldas do caos em 'Sonic' ?",
+                opcoes: ["7", "8", "345", "2"],
+                resposta: "7"
+            },
+
+            {
+                pergunta: "em Pacman quais as cores dos fantasmas?",
+                opcoes: ["roxo verde marrom e vermelho", "vermelho laranja rosa e azul", "amarelo vermelho rosa e ciano", "rosa vermelho laranja e amarelo"],
+                resposta: "vermelho laranja rosa e azul"
+            },
+
+
+            // Adicione mais perguntas aqui
+
+        ];
+
+
+        const perguntaElemento = document.getElementById("pergunta");
+        const opcoesElemento = document.getElementById("opcoes");
+        const resultadoElemento = document.getElementById("resultado");
+
+
+        let indicePerguntaAtual = 0;
+
+        function carregarPergunta() {
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+            perguntaElemento.textContent = perguntaAtual.pergunta;
+
+
+            opcoesElemento.innerHTML = "";
+            perguntaAtual.opcoes.forEach(opcao => {
+
+                const botao = document.createElement("button");
+                botao.textContent = opcao;
+                botao.addEventListener("click", () => verificarResposta(opcao));
+                opcoesElemento.appendChild(botao);
+            });
+
+            resultadoElemento.textContent = "";
+            resultadoElemento.className = "";
+        }
+
+        function verificarResposta(respostaSelecionada) {
+
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+            if (
+                respostaSelecionada === perguntaAtual.resposta) {
+
+
+                resultadoElemento.textContent = "resposta correta!";
+                resultadoElemento.className = "correto";
+
+            }
+
+            if (
+
+                respostaSelecionada === perguntaAtual.resposta
+
+            ) {
+
+
+            }
+
+
+            else {
+                resultadoElemento.textContent = "Resposta incorreta. A resposta correta é: " + perguntaAtual.resposta;
+                resultadoElemento.className = "incorreto";
+            }
+
+            // Avança para a proxima pergunta ou finaliza o quiz
+            indicePerguntaAtual++;
+            if (indicePerguntaAtual < perguntas.length) {
+
+                setTimeout(carregarPergunta, 2000); //carrega proxima pergunta apos 2 segundos 
+            }
+
+            else {
+
+                resultadoElemento.textContent = "Quiz concluido!";
+                resultadoElemento.className = "";
+
+            }
+
+        }
+
+        //carrega a primeira pergunta quando a página carrega
+        carregarPergunta();
+
+    </script>
+
+
+
+
+</body>
+
+</html>
