@@ -9,10 +9,13 @@ padding: 0;
 box-sizing: border-box;
 }
 
+
+
 body{
 background-image: url(street-fighter-5-launch-roster.jpg);
 font-family: f1;
-
+text-shadow: 3px 3px 1px rgb(140, 255, 87);
+color: rgb(0, 128, 6);
 }
 
 
